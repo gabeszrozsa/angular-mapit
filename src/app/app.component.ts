@@ -38,6 +38,36 @@ export class AppComponent {
 
   }
 
+  clickedMarker(marker:marker, index:number){
+    console.log(`Clicked marker: ${marker.name} at index ${index}`)
+  }
+
+  mapClicked($event:any){
+    var newMarker = {
+      name: 'Untitled',
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+      draggable: false
+    }
+
+    this.markers.push(newMarker)
+  }
+
+  markerDragEnd(marker:any, $event:any){
+    console.log(`dragEnd`,marker,$event);
+
+    var updMarker = {
+      name: marker.name,
+      lat: parseFloat(marker.lat),
+      lng: parseFloat(marker.lng),
+      draggable: false
+    }
+
+    var newLat = $event.coords.lat;
+    var newLng = $event.coords.lng;
+
+
+  }
 
 }
 
