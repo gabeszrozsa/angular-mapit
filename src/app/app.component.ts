@@ -12,6 +12,12 @@ export class AppComponent {
   lng: number = 18.8501225;
   zoom: number = 10;
 
+
+  markerName:string;
+  markerLat:string;
+  markerLng:string;
+  markerDraggable:string;
+
   // Markers
   markers: marker[] = [
     {
@@ -65,8 +71,19 @@ export class AppComponent {
 
     var newLat = $event.coords.lat;
     var newLng = $event.coords.lng;
+  }
 
+  addMarker(){
+    console.log('Adding marker...');
+    var isDraggable = (this.markerDraggable === "yes") ? true : false;
+    var newMarker = {
+      name:this.markerName,
+      lat:parseFloat(this.markerLat),
+      lng:parseFloat(this.markerLng),
+      draggable:isDraggable
+    }
 
+    this.markers.push(newMarker);
   }
 
 }
